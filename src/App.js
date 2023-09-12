@@ -2,7 +2,7 @@ import "./App.scss";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login/Login";
 import Dashboard from "./pages/Dashboard";
-import Register from "./pages/Register";
+import Register from "./pages/Register/Register";
 import Layout from "./layout/Layout";
 import Income from "./pages/Incomes.js";
 
