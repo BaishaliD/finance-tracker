@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./Overview.scss"; // Import the CSS for styling
+import "./TransactionTable.scss"; // Import the CSS for styling
 import {
   formatDate,
   getExpenseListOfCurrentUser,
@@ -43,7 +43,7 @@ const columns = [
   },
 ];
 
-export default function Overview() {
+export default function TransactionTable() {
   const [tableData, setTableData] = useState([]);
   const [sortColumn, setSortColumn] = useState(columns);
 

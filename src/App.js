@@ -6,7 +6,7 @@ import Register from "./pages/Register/Register";
 import Layout from "./layout/Layout";
 import Income from "./pages/Incomes/Incomes";
 import Expenses from "./pages/Expenses/Expenses";
-import Overview from "./pages/Overview/Overview";
+import Insights from "./pages/Insights/Insights";
 
 function App() {
   return (
@@ -16,10 +16,10 @@ function App() {
           <Route path="/" exact element={<Login />} />
           <Route path="/register" exact element={<Register />} />
           <Route
-            path="/overview"
+            path="/insights"
             element={
-              <Layout heading="Overview">
-                <Overview />
+              <Layout heading="Insights">
+                <Insights />
               </Layout>
             }
           />

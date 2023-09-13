@@ -4,7 +4,7 @@ import cors from "cors";
 import React from "react";
 import { renderToString } from "react-dom/server";
 import path from "path";
-// import Dashboard from "../src/pages/Dashboard.js";
+import Dashboard from "../src/pages/Dashboard/Dashboard.js";
 
 // const db = require("./config/mongoose");
 
@@ -29,23 +29,27 @@ app.get("/healthcheck", function (req, res) {
 });
 
 // Server-side rendering for the dashboard route using EJS template
-// app.get("/dashboard", (req, res) => {
-//   const dashboardHtml = renderToString(
-//     <div>
-//       <h1>Hello from the other side</h1>
-//       <Dashboard />
-//     </div>
-//   );
-//   return res.send(`
-//     <html>
-//       <body>
-//         <div id="root">
-//         ${dashboardHtml}
-//         </div>
-//       </body>
-//     </html>
-//   `);
-// });
+app.get("/dashboard/:slug1/:slug2/:slug3", (req, res) => {
+  console.log("SLUGS ", req.params.slug1, req.params.slug2, req.params.slug3);
+  const dashboardHtml = renderToString(
+    <div id="root">
+      <Dashboard
+        income={req.params.slug1}
+        expense={req.params.slug2}
+        balance={req.params.slug3}
+      />
+    </div>
+  );
+  return res.send(`
+    <html>
+      <body>
+        <div id="root">
+        ${dashboardHtml}
+        </div>
+      </body>
+    </html>
+  `);
+});
 
 // Client-side rendering for other routes
 app.get("*", (req, res) => {

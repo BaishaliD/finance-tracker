@@ -14,7 +14,7 @@ export const signIn = (formData, navigate) => async (dispatch) => {
     const { data } = await api.signIn(formData);
 
     dispatch({ type: AUTH, data });
-    navigate("/dashboard");
+    navigate("/insights");
   } catch (err) {
     console.log("Signin error ", err);
   }
