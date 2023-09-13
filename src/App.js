@@ -5,6 +5,7 @@ import Dashboard from "./pages/Dashboard";
 import Register from "./pages/Register/Register";
 import Layout from "./layout/Layout";
 import Income from "./pages/Incomes.js";
+import { useState } from "react";
 
 function App() {
   return (

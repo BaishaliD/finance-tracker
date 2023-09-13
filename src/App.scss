@@ -10,3 +10,21 @@
   align-items: center;
   background-color: var(--lightgray);
 }
+
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-weight: bold;
+  font-size: 16px;
+  color: var(--accent);
+}
+
+button:hover {
+  background-color: var(--hover);
+}

@@ -1,7 +1,13 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Login.scss";
+import "../Forms.scss";
+import { useDispatch } from "react-redux";
+import { signIn } from "../../redux/actions/auth";
 
 function Login() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   // State to manage user input
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,7 +20,7 @@ function Login() {
     console.log("Password:", password);
     // You can send the data to your backend for authentication
     if (email !== "" && password !== "") {
-      // You can send the data to your backend for authentication
+      dispatch(signIn({ email, password }, navigate));
     }
   };
 

@@ -13,34 +13,6 @@ h2 {
   color: #333;
 }
 
-.form-group {
-  margin-bottom: 20px;
-}
-
-label {
-  display: block;
-  font-weight: bold;
-  color: #555;
-  font-size: 14px;
-  text-align: left;
-  margin-bottom: 5px;
-}
-
-input,
-textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  outline: none;
-  transition: border-color 0.2s;
-  box-sizing: border-box;
-}
-
-input:focus {
-  border-color: var(--accent);
-}
-
 button {
   width: 100%;
   padding: 12px;

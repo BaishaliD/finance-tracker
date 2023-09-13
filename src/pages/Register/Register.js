@@ -1,9 +1,14 @@
-// Login.js
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Register.scss";
+import "../Forms.scss";
+import { useDispatch } from "react-redux";
+import { signUp } from "../../redux/actions/auth";
 
 function Register() {
-  // State to manage user input
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,7 +17,7 @@ function Register() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (name !== "" && email !== "" && password !== "") {
-      // You can send the data to your backend for authentication
+      dispatch(signUp({ name, email, password }, navigate));
     }
   };
 

@@ -1,9 +1,10 @@
 :root {
   --primary: #dfe1f3;
   --accent: #455af7;
-  /* --hover: ; */
+  --hover: #cfcfe5;
   --yellow: #ffd151;
   --lightgray: #f6f7fb;
+  --selected: #5865cb;
 }
 
 body {
