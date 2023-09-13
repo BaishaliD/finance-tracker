@@ -28,3 +28,14 @@ button {
 button:hover {
   background-color: var(--hover);
 }
+
+.no-data {
+  padding: 2rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--darkgray);
+}

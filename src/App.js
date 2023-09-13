@@ -4,7 +4,7 @@ import Login from "./pages/Login/Login";
 import Dashboard from "./pages/Dashboard";
 import Register from "./pages/Register/Register";
 import Layout from "./layout/Layout";
-import Income from "./pages/Incomes.js";
+import Income from "./pages/Incomes/Incomes.js";
 import { useState } from "react";
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
           <Route
             path="/dashboard"
             element={
-              <Layout>
+              <Layout heading="Dashboard">
                 <Dashboard />
               </Layout>
             }
@@ -25,7 +25,7 @@ function App() {
           <Route
             path="/incomes"
             element={
-              <Layout>
+              <Layout heading="Incomes">
                 <Income />
               </Layout>
             }
@@ -33,7 +33,7 @@ function App() {
           <Route
             path="/expenses"
             element={
-              <Layout>
+              <Layout heading="Expenses">
                 <Dashboard />
               </Layout>
             }

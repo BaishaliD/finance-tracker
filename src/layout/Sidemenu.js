@@ -15,8 +15,8 @@ const menu = [
     icon: DashboardIcon,
     selectedIcon: DashboardIconSelected,
     route: "/dashboard",
-    height: 25,
-    width: 25,
+    height: 20,
+    width: 20,
   },
   {
     id: 2,

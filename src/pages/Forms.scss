@@ -22,6 +22,10 @@ textarea {
   box-sizing: border-box;
 }
 
+textarea:focus {
+  border-color: #007bff;
+}
+
 input:focus {
   border-color: var(--accent);
 }

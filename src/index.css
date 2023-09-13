@@ -4,10 +4,12 @@
   --hover: #cfcfe5;
   --yellow: #ffd151;
   --lightgray: #f6f7fb;
+  --darkgray: #777777;
   --selected: #5865cb;
 }
 
-body {
+body,
+::placeholder {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
