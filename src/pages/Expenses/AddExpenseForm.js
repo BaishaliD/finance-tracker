@@ -68,7 +68,7 @@ export default function AddExpenseForm({
       </div> */}
 
       <div className="form-group">
-        <label htmlFor="category">Select Category:</label>
+        <label htmlFor="category">Select Category</label>
         <select
           id="category"
           value={formData.category}

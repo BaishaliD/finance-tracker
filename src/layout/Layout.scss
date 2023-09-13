@@ -48,6 +48,8 @@
 .body-container {
   width: 100%;
   padding: 2rem;
+  max-height: 100vh;
+  overflow-y: scroll;
 
   .heading {
     width: 95%;

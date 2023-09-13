@@ -8,7 +8,7 @@ import ExpenseCard from "./ExpenseCard";
 const INIT_FORM_DATA = {
   source: "",
   amount: 0,
-  category: null,
+  category: "",
   date: new Date(),
   comments: "",
 };
