@@ -3,11 +3,7 @@ import {
   getIncomeListOfCurrentUser,
   getExpenseListOfCurrentUser,
 } from "../../utils";
-import StatsCard from "./StatsCard";
 import "./Insights.scss";
-import ExpenseIcon from "../../assets/icons/expense-rct.png";
-import IncomeIcon from "../../assets/icons/money-bag.png";
-import BalanceIcon from "../../assets/icons/expense-rct.png";
 import DoughnutChart from "./Doughnut";
 import BarChart from "./BarChart";
 import TransactionTable from "./TransactionTable";
@@ -26,10 +22,6 @@ export const options = {
 };
 
 export default function Insights() {
-  const [grossIncome, setGrossIncome] = useState();
-  const [grossExpense, setGrossExpense] = useState();
-  const [grossBalance, setGrossBalance] = useState();
-
   const [incomeCategoryLabels, setIncomeCategoryLabels] = useState([]);
   const [incomeCategoryData, setIncomeCategoryData] = useState([]);
 
@@ -45,23 +37,6 @@ export default function Insights() {
   useEffect(() => {
     const incomeList = getIncomeListOfCurrentUser();
     const expenseList = getExpenseListOfCurrentUser();
-
-    console.log("incomeList ", incomeList);
-    const totalIncome = incomeList.reduce(
-      (acc, income) => acc + parseInt(income.amount),
-      0
-    );
-    setGrossIncome(totalIncome);
-
-    const totalExpense = expenseList.reduce(
-      (acc, expense) => acc + parseInt(expense.amount),
-      0
-    );
-    setGrossExpense(totalExpense);
-
-    const balance = totalIncome - totalExpense;
-    setGrossBalance(balance);
-
     incomeCategory(incomeList);
     expenseCategory(expenseList);
     dailyIncome(incomeList);
@@ -134,20 +109,6 @@ export default function Insights() {
 
   return (
     <div>
-      {/* <div className="card-container">
-        <StatsCard
-          title={"Total Income"}
-          value={grossIncome}
-          icon={IncomeIcon}
-        />
-        <StatsCard
-          title={"Total Expense"}
-          value={grossExpense}
-          icon={ExpenseIcon}
-        />
-        <StatsCard title={"Balance"} value={grossBalance} icon={BalanceIcon} />
-      </div> */}
-
       <TransactionTable />
 
       <div className="chart-container">

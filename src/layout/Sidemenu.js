@@ -11,6 +11,7 @@ import {
   getIncomeListOfCurrentUser,
   getExpenseListOfCurrentUser,
 } from "../utils";
+import MenuItem from "./MenuItem";
 
 const menu = [
   {
@@ -89,45 +90,11 @@ export default function Sidemenu() {
           <>
             {item.route === "/dashboard" ? (
               <a href={item.route + getData()}>
-                <div
-                  key={item.id}
-                  className={`menu-item ${
-                    selectedRoute === item.route && "selected"
-                  }`}
-                >
-                  <img
-                    src={
-                      selectedRoute === item.route
-                        ? item.selectedIcon
-                        : item.icon
-                    }
-                    alt={item.label}
-                    height={item.height}
-                    width={item.width}
-                  />
-                  <div>{item.label}</div>
-                </div>
+                <MenuItem item={item} selectedRoute={selectedRoute} />
               </a>
             ) : (
               <Link to={item.route}>
-                <div
-                  key={item.id}
-                  className={`menu-item ${
-                    selectedRoute === item.route && "selected"
-                  }`}
-                >
-                  <img
-                    src={
-                      selectedRoute === item.route
-                        ? item.selectedIcon
-                        : item.icon
-                    }
-                    alt={item.label}
-                    height={item.height}
-                    width={item.width}
-                  />
-                  <div>{item.label}</div>
-                </div>
+                <MenuItem item={item} selectedRoute={selectedRoute} />
               </Link>
             )}
           </>

@@ -1,32 +1,3 @@
-.card-container {
-  display: flex;
-  justify-content: space-around;
-
-  .card {
-    display: flex;
-    padding: 1rem;
-    margin: 1rem;
-    border: 1px solid var(--lightgray);
-    box-shadow: var(--shadow);
-    transition: all 0.2s ease-in-out;
-    border-radius: 5px;
-    &:hover {
-      transform: scale(1.05);
-    }
-
-    .info {
-      text-align: left;
-
-      h2 {
-        color: var(--accent);
-      }
-      h1 {
-        color: var(--darkgray);
-      }
-    }
-  }
-}
-
 .chart-container {
   display: flex;
   width: 100%;
