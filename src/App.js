@@ -5,7 +5,7 @@ import Dashboard from "./pages/Dashboard";
 import Register from "./pages/Register/Register";
 import Layout from "./layout/Layout";
 import Income from "./pages/Incomes/Incomes.js";
-import { useState } from "react";
+import Expenses from "./pages/Expenses/Expenses";
 
 function App() {
   return (
@@ -34,7 +34,7 @@ function App() {
             path="/expenses"
             element={
               <Layout heading="Expenses">
-                <Dashboard />
+                <Expenses />
               </Layout>
             }
           />
