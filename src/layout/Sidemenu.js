@@ -10,6 +10,15 @@ import { useLocation, Link } from "react-router-dom";
 
 const menu = [
   {
+    id: 0,
+    label: "Overview",
+    icon: DashboardIcon,
+    selectedIcon: DashboardIconSelected,
+    route: "/overview",
+    height: 20,
+    width: 20,
+  },
+  {
     id: 1,
     label: "Dashboard",
     icon: DashboardIcon,

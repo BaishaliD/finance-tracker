@@ -1,11 +1,12 @@
 import "./App.scss";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login/Login";
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./pages/Dashboard/Dashboard";
 import Register from "./pages/Register/Register";
 import Layout from "./layout/Layout";
-import Income from "./pages/Incomes/Incomes.js";
+import Income from "./pages/Incomes/Incomes";
 import Expenses from "./pages/Expenses/Expenses";
+import Overview from "./pages/Overview/Overview";
 
 function App() {
   return (
@@ -14,6 +15,14 @@ function App() {
         <Routes>
           <Route path="/" exact element={<Login />} />
           <Route path="/register" exact element={<Register />} />
+          <Route
+            path="/overview"
+            element={
+              <Layout heading="Overview">
+                <Overview />
+              </Layout>
+            }
+          />
           <Route
             path="/dashboard"
             element={

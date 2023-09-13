@@ -1,40 +1,125 @@
 import React, { useEffect, useState } from "react";
 import "./Overview.scss"; // Import the CSS for styling
-import { formatDate } from "../../utils";
+import {
+  formatDate,
+  getExpenseListOfCurrentUser,
+  getIncomeListOfCurrentUser,
+} from "../../utils";
+import SortIcon from "../../assets/icons/up-down.png";
+import AscIcon from "../../assets/icons/up-arrow.png";
+import DescIcon from "../../assets/icons/down-arrow.png";
+
+const columns = [
+  {
+    value: "source",
+    name: "Name",
+    sortDirection: "none",
+  },
+  {
+    value: "type",
+    name: "Type",
+    sortDirection: "none",
+  },
+  {
+    value: "amount",
+    name: "Amount",
+    sortDirection: "none",
+    compare: "number",
+  },
+  {
+    value: "category",
+    name: "Category",
+    sortDirection: "none",
+  },
+  {
+    value: "date",
+    name: "Date",
+    sortDirection: "none",
+  },
+  {
+    value: "comments",
+    name: "Comments",
+    sortDirection: "none",
+  },
+];
 
 export default function Overview() {
   const [tableData, setTableData] = useState([]);
+  const [sortColumn, setSortColumn] = useState(columns);
+
+  const handleSort = (column) => {
+    const col = sortColumn.find((el) => el.value === column);
+    console.log(" tableData", tableData);
+    if (col.sortDirection === "asc") {
+      if (col.compare === "number") {
+        tableData.sort((a, b) => a[column] - b[column]);
+      } else {
+        tableData.sort((a, b) => b[column].localeCompare(a[column]));
+      }
+      setTableData(tableData);
+      setSortColumn((prev) => {
+        const index = prev.findIndex((el) => el.value === column);
+        prev[index] = { ...prev[index], sortDirection: "desc" };
+        return [...prev];
+      });
+    } else {
+      if (col.compare === "number") {
+        tableData.sort((a, b) => b[column] - a[column]);
+      } else {
+        tableData.sort((a, b) => {
+          console.log(a, column);
+          return a[column].localeCompare(b[column]);
+        });
+      }
+      setTableData(tableData);
+      setSortColumn((prev) => {
+        const index = prev.findIndex((el) => el.value === column);
+        prev[index] = { ...prev[index], sortDirection: "asc" };
+        return [...prev];
+      });
+    }
+  };
+
   useEffect(() => {
-    const _incomeList = localStorage.getItem("income_list")
-      ? JSON.parse(localStorage.getItem("income_list"))
-      : [];
-    const _expenseList = localStorage.getItem("expense_list")
-      ? JSON.parse(localStorage.getItem("expense_list"))
-      : [];
+    const _incomeList = getIncomeListOfCurrentUser();
+    const _expenseList = getExpenseListOfCurrentUser();
     const incomeList = _incomeList.map((el) => {
-      return { type: "Income", ...el };
+      return { type: "income", category: "-", ...el };
     });
     const expenseList = _expenseList.map((el) => {
-      return { type: "Expense", ...el };
+      return { type: "expense", ...el };
     });
     const list = [...incomeList, ...expenseList];
-    console.log(list);
     setTableData(list);
-
-    // list.sort(())
   }, []);
+
   return (
     <div>
       <h2>Expense and Income Table</h2>
       <table className="expense-table">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Type</th>
-            <th>Amount</th>
-            <th>Category</th>
-            <th>Date</th>
-            <th>Comments</th>
+            {sortColumn.map((column) => (
+              <th>
+                <div>
+                  {column.name}
+                  <img
+                    onClick={() => handleSort(column.value)}
+                    style={{ marginLeft: "5px" }}
+                    src={
+                      column.sortDirection === "asc"
+                        ? AscIcon
+                        : column.sortDirection === "desc"
+                        ? DescIcon
+                        : SortIcon
+                    }
+                    height={16}
+                    width={16}
+                    alt="sort"
+                  />
+                </div>
+              </th>
+            ))}
           </tr>
         </thead>
         <tbody>
@@ -42,8 +127,14 @@ export default function Overview() {
             <tr key={item.id}>
               <td>{item.source}</td>
               <td>{item.type}</td>
-              <td className="income">{item.amount}</td>
-              <td>{item.category ? item.category : "-"}</td>
+              <td
+                style={
+                  item.type === "income" ? { color: "green" } : { color: "red" }
+                }
+              >
+                Rs. {item.amount}
+              </td>
+              <td>{item.category}</td>
               <td>{formatDate(item.date)}</td>
               <td>{item.comments}</td>
             </tr>

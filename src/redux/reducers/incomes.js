@@ -1,17 +1,19 @@
 import * as actionType from "../const/actionsTypes";
+import { getIncomeListOfCurrentUser } from "../../utils";
 
 const getInitialState = () => {
-  const localIncomeList = localStorage.getItem("income_list")
-    ? JSON.parse(localStorage.getItem("income_list"))
-    : [];
-  return { incomeList: localIncomeList };
+  const incomeListForCurrentUser = getIncomeListOfCurrentUser();
+  return { incomeList: incomeListForCurrentUser };
 };
+
 const initialState = getInitialState();
 
 const incomeReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionType.ADD_INCOME:
-      const updatedList = [...state.incomeList, action.data];
+      const userEmail = JSON.parse(localStorage.getItem("user_info"))?.result
+        ?.email;
+      const updatedList = [...state.incomeList, { userEmail, ...action.data }];
       localStorage.setItem("income_list", JSON.stringify(updatedList));
       return {
         ...state,

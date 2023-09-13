@@ -1,17 +1,18 @@
 import * as actionType from "../const/actionsTypes";
+import { getExpenseListOfCurrentUser } from "../../utils";
 
 const getInitialState = () => {
-  const localExpenseList = localStorage.getItem("expense_list")
-    ? JSON.parse(localStorage.getItem("expense_list"))
-    : [];
-  return { expenseList: localExpenseList };
+  const expenseListForCurrentUser = getExpenseListOfCurrentUser();
+  return { expenseList: expenseListForCurrentUser };
 };
 const initialState = getInitialState();
 
 const expenseReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionType.ADD_EXPENSE:
-      const updatedList = [...state.expenseList, action.data];
+      const userEmail = JSON.parse(localStorage.getItem("user_info"))?.result
+        ?.email;
+      const updatedList = [...state.expenseList, { userEmail, ...action.data }];
       localStorage.setItem("expense_list", JSON.stringify(updatedList));
       return {
         ...state,

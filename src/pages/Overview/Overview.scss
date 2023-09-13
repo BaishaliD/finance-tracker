@@ -18,15 +18,21 @@ h2 {
   }
 
   th {
-    background-color: var(--accent); // Use var(--accent) for the accent color
-    color: white;
+    background-color: var(--hover); // Use var(--accent) for the accent color
+    color: var(--accent);
+
+    div {
+      display: flex;
+      align-items: center;
+      padding: 2px;
+
+      img {
+        cursor: pointer;
+      }
+    }
   }
 
   tr:nth-child(even) {
     background-color: var(--lightgray); // Use var(--lightgray) for gray
   }
-
-  // tr:hover {
-  //   background-color: var(--hover); // Use var(--accent) for the accent color
-  // }
 }

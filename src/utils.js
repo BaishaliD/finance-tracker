@@ -1,3 +1,27 @@
+export const getIncomeListOfCurrentUser = () => {
+  const currentUserEmail = JSON.parse(localStorage.getItem("user_info"))?.result
+    ?.email;
+  const localIncomeList = localStorage.getItem("income_list")
+    ? JSON.parse(localStorage.getItem("income_list"))
+    : [];
+  const incomeListForCurrentUser = localIncomeList.filter(
+    (el) => el.userEmail === currentUserEmail
+  );
+  return incomeListForCurrentUser;
+};
+
+export const getExpenseListOfCurrentUser = () => {
+  const currentUserEmail = JSON.parse(localStorage.getItem("user_info"))?.result
+    ?.email;
+  const localExpenseList = localStorage.getItem("expense_list")
+    ? JSON.parse(localStorage.getItem("expense_list"))
+    : [];
+  const expenseListForCurrentUser = localExpenseList.filter(
+    (el) => el.userEmail === currentUserEmail
+  );
+  return expenseListForCurrentUser;
+};
+
 export const formatDate = function (inputDate) {
   // Parse the input date string in "yyyy-mm-dd" format
   const dateParts = inputDate.split("-");
