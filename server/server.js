@@ -50,7 +50,7 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../build", "index.html"));
 });
 
-const PORT = process.env.port || 5000;
+const PORT = process.env.port || 5002;
 const mongoDB = `mongodb+srv://baishali95920:MHZH47CjTfmPsCGX@cluster1.fwclc62.mongodb.net/?retryWrites=true&w=majority`;
 
 mongoose

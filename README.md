@@ -1,7 +1,10 @@
-
 # Finance Tracker App
 
 This repository contains the source code for the Finance Tracker app, developed using React, Node.js, and MongoDB Atlas. You can follow the instructions below to set up and run the app on your local system.
+
+## Live Demo
+
+[https://finance-tracker-sandy.vercel.app/](https://finance-tracker-sandy.vercel.app/)
 
 ## Prerequisites
 
@@ -22,8 +25,6 @@ cd finance-tracker
 npm install
 ```
 
-
-
 ## Running the App
 
 To run the Finance Tracker app on your local system, follow these steps:
@@ -34,10 +35,18 @@ To run the Finance Tracker app on your local system, follow these steps:
 npm start
 ```
 
-This command will create a build folder of the client and serve it using the Node server on `http://localhost:5000`.
+This command will create a build folder of the client and serve it using the Node server on `http://localhost:5002`.
 
-2. Open your web browser and navigate to `http://localhost:5000` to access the Finance Tracker app.
+2. Open your web browser and navigate to `http://localhost:5002` to access the Finance Tracker app.
 
+## Run tests
+
+Run the test suites on your local system with the command
+
+```bash
+cd finance-tracker
+npm run test
+```
 
 ## Screenshots
 
@@ -46,6 +55,3 @@ This command will create a build folder of the client and serve it using the Nod
 <img width="250" alt="add-income" src="https://github.com/BaishaliD/finance-tracker/assets/57707066/48945a40-f48b-4c8e-88cd-5a8e3601ddc8">
 <img width="250" alt="Add-Expense" src="https://github.com/BaishaliD/finance-tracker/assets/57707066/76b9dfd8-1d73-4514-a58d-6182255f85c0">
 <img width="250" alt="loggedoutuser" src="https://github.com/BaishaliD/finance-tracker/assets/57707066/e5e604b2-9c44-4a8d-a3d4-4b53cbb581b0">
-
-
-
