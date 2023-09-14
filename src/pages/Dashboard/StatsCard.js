@@ -1,6 +1,7 @@
 import React from "react";
 
 const cardStyles = {
+  width: "300px",
   display: "flex",
   padding: "1rem",
   margin: "1rem",
