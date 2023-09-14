@@ -87,7 +87,7 @@ export default function Sidemenu() {
       <br />
       <div>
         {menu.map((item) => (
-          <>
+          <div key={item.route}>
             {item.route === "/dashboard" ? (
               <a href={item.route + getData()}>
                 <MenuItem item={item} selectedRoute={selectedRoute} />
@@ -97,7 +97,7 @@ export default function Sidemenu() {
                 <MenuItem item={item} selectedRoute={selectedRoute} />
               </Link>
             )}
-          </>
+          </div>
         ))}
       </div>
     </div>

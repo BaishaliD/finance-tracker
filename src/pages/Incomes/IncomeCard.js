@@ -16,7 +16,9 @@ export default function Incomecard({ data, handleDelete }) {
         width={20}
         onClick={() => handleDelete(id)}
       />
-      <div className="title">{source}</div>
+      <div className="title" data-testid="income-source">
+        {source}
+      </div>
       <div className="details">
         <div style={{ width: "25%" }}>
           <img src={MoneyIcon} height={15} width={15} alt="money" />
