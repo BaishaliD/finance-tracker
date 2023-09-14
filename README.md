@@ -14,6 +14,8 @@ password : 123
 
 Before you begin, make sure you have Node.js installed on your system. If not, you can download and install it from [nodejs.org](https://nodejs.org/).
 
+This code was tested using Node Version 16.
+
 ## Getting Started
 
 1. Clone the repository to your local system using Git or download the ZIP file from [GitHub](https://github.com/BaishaliD/finance-tracker).

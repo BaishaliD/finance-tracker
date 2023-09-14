@@ -4,14 +4,18 @@ import { Provider } from "react-redux";
 import store from "../../../redux/store";
 
 const addIncome = (tasks) => {
-  const inputElement = screen.getByPlaceholderText(
+  const inputElementSource = screen.getByPlaceholderText(
     /Enter the source of income/i
   );
+  const inputElementAmount = screen.getByPlaceholderText(/Enter the amount/i);
+  const inputElementDate = screen.getByPlaceholderText(/Enter the date/i);
   const buttonElement = screen.getByRole("button", {
     name: /Add Income/i,
   });
   tasks.forEach((task) => {
-    fireEvent.change(inputElement, { target: { value: task } });
+    fireEvent.change(inputElementSource, { target: { value: task } });
+    fireEvent.change(inputElementAmount, { target: { value: 5000 } });
+    fireEvent.change(inputElementDate, { target: { value: "1993-12-14" } });
     fireEvent.click(buttonElement);
   });
 };
@@ -30,10 +34,14 @@ describe("Add income and display in list", () => {
     const inputElement = screen.getByPlaceholderText(
       /Enter the source of income/i
     );
+    const inputElementAmount = screen.getByPlaceholderText(/Enter the amount/i);
+    const inputElementDate = screen.getByPlaceholderText(/Enter the date/i);
     const buttonElement = await screen.findByRole("button", {
       name: /Add Income/i,
     });
     fireEvent.change(inputElement, { target: { value: "Freelance" } });
+    fireEvent.change(inputElementAmount, { target: { value: 5000 } });
+    fireEvent.change(inputElementDate, { target: { value: "1993-12-14" } });
     fireEvent.click(buttonElement);
     const divElement = screen.getByText(/Freelance/i);
     expect(divElement).toBeInTheDocument();
@@ -60,10 +68,14 @@ describe("Add income and display in list", () => {
     const inputElement = screen.getByPlaceholderText(
       /Enter the source of income/i
     );
+    const inputElementAmount = screen.getByPlaceholderText(/Enter the amount/i);
+    const inputElementDate = screen.getByPlaceholderText(/Enter the date/i);
     const buttonElement = await screen.findByRole("button", {
       name: /Add Income/i,
     });
     fireEvent.change(inputElement, { target: { value: "Freelance" } });
+    fireEvent.change(inputElementAmount, { target: { value: 5000 } });
+    fireEvent.change(inputElementDate, { target: { value: "1993-12-14" } });
     fireEvent.click(buttonElement);
     expect(inputElement.value).toBe("");
   });
