@@ -1,70 +1,51 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Finance Tracker App
 
-## Available Scripts
+This repository contains the source code for the Finance Tracker app, developed using React, Node.js, and MongoDB Atlas. You can follow the instructions below to set up and run the app on your local system.
 
-In the project directory, you can run:
+## Prerequisites
 
-### `npm start`
+Before you begin, make sure you have Node.js installed on your system. If not, you can download and install it from [nodejs.org](https://nodejs.org/).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Getting Started
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Clone the repository to your local system using Git or download the ZIP file from [GitHub](https://github.com/BaishaliD/finance-tracker).
 
-### `npm test`
+```bash
+git clone https://github.com/BaishaliD/finance-tracker.git
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Navigate to the project directory in your terminal and install all project dependencies.
 
-### `npm run build`
+```bash
+cd finance-tracker
+npm install
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Running the App
 
-### `npm run eject`
+To run the Finance Tracker app on your local system, follow these steps:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Start the server by running the following command:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+This command will create a build folder of the client and serve it using the Node server on `http://localhost:5000`.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+2. Open your web browser and navigate to `http://localhost:5000` to access the Finance Tracker app.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Screenshots
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<img width="250" alt="insights-1" src="https://github.com/BaishaliD/finance-tracker/assets/57707066/26ffa7fd-8cd8-40b9-9144-e4ab9cae2bdd">
+<img width="250" alt="insights-2" src="https://github.com/BaishaliD/finance-tracker/assets/57707066/56ff9f8a-b9b0-4a49-8272-02726d7e59fd">
+<img width="250" alt="add-income" src="https://github.com/BaishaliD/finance-tracker/assets/57707066/48945a40-f48b-4c8e-88cd-5a8e3601ddc8">
+<img width="250" alt="Add-Expense" src="https://github.com/BaishaliD/finance-tracker/assets/57707066/76b9dfd8-1d73-4514-a58d-6182255f85c0">
+<img width="250" alt="loggedoutuser" src="https://github.com/BaishaliD/finance-tracker/assets/57707066/e5e604b2-9c44-4a8d-a3d4-4b53cbb581b0">
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
