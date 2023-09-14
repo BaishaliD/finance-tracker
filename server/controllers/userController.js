@@ -46,7 +46,7 @@ const signinController = async (req, res) => {
 const signupController = async (req, res) => {
   const { name, email, password } = req.body;
   try {
-    if (!email || !name || !password || password.length <= 6) {
+    if (!email || !name || !password) {
       return res.status(400).json({ message: "All fields are mandatory" });
     }
     const userExists = await User.findOne({ email });

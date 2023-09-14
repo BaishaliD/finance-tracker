@@ -12,7 +12,7 @@ export default function DoughnutChart({ chartdata, labels }) {
       labels,
       datasets: [
         {
-          label: "# of Votes",
+          label: "Amount",
           data: chartdata,
           backgroundColor: [
             "rgba(255, 99, 132, 0.2)",
@@ -40,7 +40,7 @@ export default function DoughnutChart({ chartdata, labels }) {
       {chartdata?.length > 0 && labels?.length > 0 ? (
         <Doughnut data={data} />
       ) : (
-        <p>No Data</p>
+        <div className="no-chart-data">No data to show</div>
       )}
     </div>
   );

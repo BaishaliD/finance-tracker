@@ -3,6 +3,7 @@
   background-color: var(--primary);
   height: 100vh;
   padding: 1rem;
+  position: relative;
 
   h2 {
     // text-align: left;
@@ -36,6 +37,25 @@
     color: var(--accent);
     font-weight: bold;
     cursor: auto;
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 5rem;
+    left: 50%;
+    transform: translateX(-50%);
+
+    h1 {
+      color: var(--accent);
+      margin-bottom: 4rem;
+    }
+
+    button {
+      color: white;
+      background-color: var(--selected);
+      padding-left: 2rem !important;
+      padding-right: 2rem !important;
+    }
   }
 }
 

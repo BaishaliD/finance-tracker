@@ -7,6 +7,7 @@ import Layout from "./layout/Layout";
 import Income from "./pages/Incomes/Incomes";
 import Expenses from "./pages/Expenses/Expenses";
 import Insights from "./pages/Insights/Insights";
+import Loggedout from "./pages/Loggedout/Loggedout";
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
               </Layout>
             }
           />
+          <Route path="/loggedout" element={<Loggedout />} />
         </Routes>
       </Router>
     </div>

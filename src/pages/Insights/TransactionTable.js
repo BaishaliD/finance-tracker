@@ -95,7 +95,7 @@ export default function TransactionTable() {
 
   return (
     <div>
-      <h2>Expense and Income Table</h2>
+      <h3>Recent Transactions</h3>
       <table className="expense-table">
         <thead>
           <tr>
@@ -122,25 +122,34 @@ export default function TransactionTable() {
             ))}
           </tr>
         </thead>
-        <tbody>
-          {tableData.map((item) => (
-            <tr key={item.id}>
-              <td>{item.source}</td>
-              <td>{item.type}</td>
-              <td
-                style={
-                  item.type === "income" ? { color: "green" } : { color: "red" }
-                }
-              >
-                Rs. {item.amount}
-              </td>
-              <td>{item.category}</td>
-              <td>{formatDate(item.date)}</td>
-              <td>{item.comments}</td>
-            </tr>
-          ))}
-        </tbody>
+        {tableData?.length > 0 ? (
+          <tbody>
+            {tableData.map((item) => (
+              <tr key={item.id}>
+                <td>{item.source}</td>
+                <td>{item.type}</td>
+                <td
+                  style={
+                    item.type === "income"
+                      ? { color: "green" }
+                      : { color: "red" }
+                  }
+                >
+                  Rs. {item.amount}
+                </td>
+                <td>{item.category}</td>
+                <td>{formatDate(item.date)}</td>
+                <td>{item.comments}</td>
+              </tr>
+            ))}
+          </tbody>
+        ) : null}
       </table>
+      {!tableData?.length > 0 && (
+        <div className="no-table-data">
+          You don't have any recent transaction
+        </div>
+      )}
     </div>
   );
 }

@@ -113,11 +113,15 @@ export default function Insights() {
 
       <div className="chart-container">
         <div className="large">
-          <h3>Expense Category</h3>
-          <BarChart chartdata={expenseData} labels={expenseLabels} />
+          <h3>Daily Expense</h3>
+          <BarChart
+            chartdata={expenseData}
+            labels={expenseLabels}
+            datalabel={"Expense"}
+          />
         </div>
         <div className="small">
-          <h3>Daily Expense</h3>
+          <h3>Expense by Category</h3>
           <DoughnutChart
             chartdata={expenseCategoryData}
             labels={expenseCategoryLabels}
@@ -127,7 +131,7 @@ export default function Insights() {
 
       <div className="chart-container">
         <div className="small">
-          <h3>Income Category</h3>
+          <h3>Income by Source</h3>
           <DoughnutChart
             chartdata={incomeCategoryData}
             labels={incomeCategoryLabels}
@@ -135,7 +139,11 @@ export default function Insights() {
         </div>
         <div className="large">
           <h3>Daily Income</h3>
-          <BarChart chartdata={incomeData} labels={incomeLabels} />
+          <BarChart
+            chartdata={incomeData}
+            labels={incomeLabels}
+            datalabel={"Income"}
+          />
         </div>
       </div>
     </div>

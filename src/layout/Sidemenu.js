@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import "./Layout.scss";
+import InsightsIcon from "../assets/icons/data-analytics.png";
 import IncomeIcon from "../assets/icons/income.png";
 import ExpenseIcon from "../assets/icons/expense.png";
-import DashboardIcon from "../assets/icons/data-analytics.png";
+import DashboardIcon from "../assets/icons/dashboard.png";
+import InsightsIconSelecetd from "../assets/icons/data-analytics-white.png";
 import IncomeIconSelected from "../assets/icons/income-white.png";
 import ExpenseIconSelected from "../assets/icons/expense-white.png";
 import DashboardIconSelected from "../assets/icons/data-analytics-white.png";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import {
   getIncomeListOfCurrentUser,
   getExpenseListOfCurrentUser,
@@ -17,8 +19,8 @@ const menu = [
   {
     id: 0,
     label: "Insights",
-    icon: DashboardIcon,
-    selectedIcon: DashboardIconSelected,
+    icon: InsightsIcon,
+    selectedIcon: InsightsIconSelecetd,
     route: "/insights",
     height: 20,
     width: 20,
@@ -55,13 +57,22 @@ const menu = [
 ];
 
 export default function Sidemenu() {
+  const navigate = useNavigate();
   const location = useLocation();
   const [selectedRoute, setSelectedRoute] = useState("/insights");
+  const [name, setName] = useState("");
 
   useEffect(() => {
     console.log("Route changed ", location.pathname);
     setSelectedRoute(location?.pathname);
   }, [location?.pathname]);
+
+  useEffect(() => {
+    const username = localStorage.getItem("user_info")
+      ? JSON.parse(localStorage.getItem("user_info")).result?.name
+      : "";
+    setName(username);
+  }, []);
 
   const getData = () => {
     const incomeList = getIncomeListOfCurrentUser();
@@ -99,6 +110,17 @@ export default function Sidemenu() {
             )}
           </div>
         ))}
+        <div className="footer">
+          <h1>Hi, {name}</h1>
+          <button
+            onClick={() => {
+              localStorage.removeItem("user_info");
+              navigate("/");
+            }}
+          >
+            Logout
+          </button>
+        </div>
       </div>
     </div>
   );
