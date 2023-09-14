@@ -25,15 +25,12 @@ const h1Styles = {
   color: "#9d9d9d",
 };
 
-export default function StatsCard({ title, value, icon }) {
+export default function StatsCard({ title, value }) {
   return (
     <div style={cardStyles}>
       <div style={infoStyles}>
         <h2 styke={h2Styles}>{title}</h2>
         <h1 style={h1Styles}>Rs. {value}</h1>
-      </div>
-      <div>
-        <img src={icon} alt={title} height={70} width={70} />
       </div>
     </div>
   );
