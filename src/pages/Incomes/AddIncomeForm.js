@@ -1,10 +1,15 @@
 import "../Forms.scss";
 
-export default function AddIncomeForm({ formData, setFormData, handleSubmit }) {
+export default function AddIncomeForm({
+  formData,
+  setFormData,
+  handleSubmit,
+  error,
+}) {
   return (
     <form>
       <div className="form-group">
-        <label htmlFor="source">Source of income:</label>
+        <label htmlFor="source">Source of income</label>
         <input
           type="text"
           id="source"
@@ -19,7 +24,7 @@ export default function AddIncomeForm({ formData, setFormData, handleSubmit }) {
         />
       </div>
       <div className="form-group">
-        <label htmlFor="amount">Amount</label>
+        <label htmlFor="amount">Amount*</label>
         <input
           type="number"
           id="amount"
@@ -34,7 +39,7 @@ export default function AddIncomeForm({ formData, setFormData, handleSubmit }) {
         />
       </div>
       <div className="form-group">
-        <label htmlFor="date">Date:</label>
+        <label htmlFor="date">Date*</label>
         <input
           type="date"
           id="date"
@@ -63,6 +68,7 @@ export default function AddIncomeForm({ formData, setFormData, handleSubmit }) {
           }
         />
       </div>
+      <div className="error-text">{error}</div>
       <button onClick={handleSubmit} type="button">
         Add Income
       </button>

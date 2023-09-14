@@ -1,12 +1,13 @@
-h2 {
-  color: var(--accent); // Use var(--accent) for the accent color
+h3 {
+  color: var(--darkergray);
+  text-align: left;
 }
 
 .expense-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
-  background-color: var(--primary); // Use var(--primary) for the primary color
+  background-color: var(--primary);
   text-transform: capitalize;
   box-shadow: var(--shadow);
 
@@ -14,11 +15,11 @@ h2 {
   td {
     padding: 10px;
     text-align: left;
-    border-bottom: 1px solid var(--lightgray); // Use var(--lightgray) for gray
+    border-bottom: 1px solid var(--lightgray);
   }
 
   th {
-    background-color: var(--hover); // Use var(--accent) for the accent color
+    background-color: var(--hover);
     color: var(--accent);
 
     div {
@@ -33,6 +34,11 @@ h2 {
   }
 
   tr:nth-child(even) {
-    background-color: var(--lightgray); // Use var(--lightgray) for gray
+    background-color: var(--lightgray);
   }
+}
+.no-table-data {
+  font-size: 24px;
+  padding: 2rem;
+  color: var(--darkgray);
 }

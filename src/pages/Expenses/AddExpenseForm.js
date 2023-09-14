@@ -7,14 +7,12 @@ export default function AddExpenseForm({
   formData,
   setFormData,
   handleSubmit,
-  category,
-  setCategory,
+  error,
 }) {
-  const [openSelectCategory, setOpenSelectCategory] = useState(false);
   return (
     <form>
       <div className="form-group">
-        <label htmlFor="source">Source of expense</label>
+        <label htmlFor="source">Source of expense*</label>
         <input
           type="text"
           id="source"
@@ -29,7 +27,7 @@ export default function AddExpenseForm({
         />
       </div>
       <div className="form-group">
-        <label htmlFor="amount">Amount</label>
+        <label htmlFor="amount">Amount*</label>
         <input
           type="number"
           id="amount"
@@ -44,31 +42,8 @@ export default function AddExpenseForm({
         />
       </div>
 
-      {/* <div className="form-group dropdown">
-        <label htmlFor="category">Select Category</label>
-        <div
-          onClick={() => {
-            setOpenSelectCategory(true);
-          }}
-          className="dropdown-trigger"
-        >
-          {category ? (
-            <span>{category}</span>
-          ) : (
-            <span className="placeholder">Select a category</span>
-          )}
-        </div>
-        {openSelectCategory && (
-          <DropdownWithIcons
-            setCategory={setCategory}
-            setFormData={setFormData}
-            setOpenSelectCategory={setOpenSelectCategory}
-          />
-        )}
-      </div> */}
-
       <div className="form-group">
-        <label htmlFor="category">Select Category</label>
+        <label htmlFor="category">Select Category*</label>
         <select
           id="category"
           value={formData.category}
@@ -89,7 +64,7 @@ export default function AddExpenseForm({
       </div>
 
       <div className="form-group">
-        <label htmlFor="date">Date</label>
+        <label htmlFor="date">Date*</label>
         <input
           type="date"
           id="date"
@@ -118,6 +93,7 @@ export default function AddExpenseForm({
           }
         />
       </div>
+      <div className="error-text">{error}</div>
       <button onClick={handleSubmit} type="button">
         Add Expense
       </button>

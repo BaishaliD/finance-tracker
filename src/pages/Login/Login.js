@@ -5,6 +5,9 @@ import "../Forms.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { signIn } from "../../redux/actions/auth";
 
+const WHITELISTED_EMAIL = "test@abc.com";
+const WHITELISTED_PASSWORD = "123";
+
 function Login() {
   const { authError } = useSelector(({ auth }) => auth);
   const navigate = useNavigate();
@@ -16,7 +19,17 @@ function Login() {
   // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (email !== "" && password !== "") {
+    if (email === WHITELISTED_EMAIL && password === WHITELISTED_PASSWORD) {
+      const whitelisted_user_info = {
+        email: WHITELISTED_EMAIL,
+        name: "Guest User",
+      };
+      localStorage.setItem(
+        "user_info",
+        JSON.stringify({ result: whitelisted_user_info })
+      );
+      navigate("/insights");
+    } else if (email !== "" && password !== "") {
       dispatch(signIn({ email, password }, navigate));
     }
   };
@@ -31,7 +44,7 @@ function Login() {
             <input
               type="email"
               id="email"
-              placeholder="Enter your email"
+              placeholder={WHITELISTED_EMAIL}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -42,14 +55,14 @@ function Login() {
             <input
               type="password"
               id="password"
-              placeholder="Enter your password"
+              placeholder={WHITELISTED_PASSWORD}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              autocomplete="new-password"
+              autoComplete="off"
             />
           </div>
-          <span className="error-text">{authError}</span>
+          <div className="error-text">{authError}</div>
           <button type="submit">Login</button>
           <p className="helper-text">
             Don't have an account? <a href="/register">Register here</a>

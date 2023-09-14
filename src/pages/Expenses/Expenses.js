@@ -7,9 +7,9 @@ import ExpenseCard from "./ExpenseCard";
 
 const INIT_FORM_DATA = {
   source: "",
-  amount: 0,
+  amount: "",
   category: "",
-  date: new Date(),
+  date: "",
   comments: "",
 };
 
@@ -18,25 +18,29 @@ export default function Expenses() {
   const dispatch = useDispatch();
   const [formData, setFormData] = useState(INIT_FORM_DATA);
   const [category, setCategory] = useState();
+  const [error, setError] = useState("");
 
   const handleSubmit = () => {
+    setError("");
     const { amount, source, date, comments, category } = formData;
-    // if (!amount && !source && !date) {
-    const data = {
-      id: new Date().getTime(),
-      amount,
-      category,
-      source,
-      date,
-      comments,
-    };
-    dispatch(addExpense(data));
-    setFormData(INIT_FORM_DATA);
-    // }
+    if (!amount || !source || !date || !category) {
+      setError("Please fill all the mandatory fields");
+    } else {
+      setError("");
+      const data = {
+        id: new Date().getTime(),
+        amount,
+        category,
+        source,
+        date,
+        comments,
+      };
+      dispatch(addExpense(data));
+      setFormData(INIT_FORM_DATA);
+    }
   };
 
   const handleDelete = (id) => {
-    console.log("Deleting...");
     dispatch(deleteExpense(id));
   };
 
@@ -53,6 +57,7 @@ export default function Expenses() {
             setCategory={setCategory}
             setFormData={setFormData}
             handleSubmit={handleSubmit}
+            error={error}
           />
         </div>
         <div style={{ width: "60%", padding: "0 3rem" }}>

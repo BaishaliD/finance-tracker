@@ -49,7 +49,6 @@ export default function TransactionTable() {
 
   const handleSort = (column) => {
     const col = sortColumn.find((el) => el.value === column);
-    console.log(" tableData", tableData);
     if (col.sortDirection === "asc") {
       if (col.compare === "number") {
         tableData.sort((a, b) => a[column] - b[column]);
@@ -67,7 +66,6 @@ export default function TransactionTable() {
         tableData.sort((a, b) => b[column] - a[column]);
       } else {
         tableData.sort((a, b) => {
-          console.log(a, column);
           return a[column].localeCompare(b[column]);
         });
       }
@@ -95,12 +93,12 @@ export default function TransactionTable() {
 
   return (
     <div>
-      <h2>Expense and Income Table</h2>
+      <h3>Recent Transactions</h3>
       <table className="expense-table">
         <thead>
           <tr>
             {sortColumn.map((column) => (
-              <th>
+              <th key={column.value}>
                 <div>
                   {column.name}
                   <img
@@ -122,25 +120,34 @@ export default function TransactionTable() {
             ))}
           </tr>
         </thead>
-        <tbody>
-          {tableData.map((item) => (
-            <tr key={item.id}>
-              <td>{item.source}</td>
-              <td>{item.type}</td>
-              <td
-                style={
-                  item.type === "income" ? { color: "green" } : { color: "red" }
-                }
-              >
-                Rs. {item.amount}
-              </td>
-              <td>{item.category}</td>
-              <td>{formatDate(item.date)}</td>
-              <td>{item.comments}</td>
-            </tr>
-          ))}
-        </tbody>
+        {tableData?.length > 0 ? (
+          <tbody>
+            {tableData.map((item) => (
+              <tr key={item.id}>
+                <td>{item.source}</td>
+                <td>{item.type}</td>
+                <td
+                  style={
+                    item.type === "income"
+                      ? { color: "green" }
+                      : { color: "red" }
+                  }
+                >
+                  Rs. {item.amount}
+                </td>
+                <td>{item.category}</td>
+                <td>{formatDate(item.date)}</td>
+                <td>{item.comments}</td>
+              </tr>
+            ))}
+          </tbody>
+        ) : null}
       </table>
+      {!tableData?.length > 0 && (
+        <div className="no-table-data">
+          You don't have any recent transaction
+        </div>
+      )}
     </div>
   );
 }

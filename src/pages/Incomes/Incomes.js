@@ -7,35 +7,37 @@ import Incomecard from "./IncomeCard";
 
 const INIT_FORM_DATA = {
   source: "",
-  amount: 0,
-  date: new Date(),
+  amount: "",
+  date: "",
   comments: "",
 };
 
 export default function Income() {
   const incomeList = useSelector(({ income }) => income.incomeList);
-  console.log("incomeList ", incomeList);
   const dispatch = useDispatch();
   const [formData, setFormData] = useState(INIT_FORM_DATA);
+  const [error, setError] = useState("");
 
   const handleSubmit = () => {
+    setError("");
     const { amount, source, date, comments } = formData;
-    console.log("Income added ", amount, source, date, comments);
-    // if (!amount && !source && !date) {
-    const data = {
-      id: new Date().getTime(),
-      amount,
-      source,
-      date,
-      comments,
-    };
-    dispatch(addIncome(data));
-    setFormData(INIT_FORM_DATA);
-    // }
+    if (!amount || !source || !date) {
+      setError("Please fill all the mandatory fields");
+    } else {
+      setError("");
+      const data = {
+        id: new Date().getTime(),
+        amount,
+        source,
+        date,
+        comments,
+      };
+      dispatch(addIncome(data));
+      setFormData(INIT_FORM_DATA);
+    }
   };
 
   const handleDelete = (id) => {
-    console.log("Deleting...");
     dispatch(deleteIncome(id));
   };
 
@@ -50,6 +52,7 @@ export default function Income() {
             formData={formData}
             setFormData={setFormData}
             handleSubmit={handleSubmit}
+            error={error}
           />
         </div>
         <div style={{ width: "60%", padding: "0 3rem" }}>

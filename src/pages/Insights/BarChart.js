@@ -25,21 +25,17 @@ export const options = {
     legend: {
       position: "top",
     },
-    title: {
-      display: true,
-      text: "Chart.js Bar Chart",
-    },
   },
 };
 
-export default function BarChart({ chartdata, labels }) {
+export default function BarChart({ chartdata, labels, datalabel }) {
   const [data, setData] = useState({});
   useEffect(() => {
     setData({
       labels,
       datasets: [
         {
-          label: "Dataset 1",
+          label: datalabel,
           data: chartdata,
           backgroundColor: "rgba(255, 99, 132, 0.5)",
         },
@@ -51,7 +47,7 @@ export default function BarChart({ chartdata, labels }) {
       {chartdata?.length > 0 && labels?.length > 0 ? (
         <Bar options={options} data={data} />
       ) : (
-        <p>No Data</p>
+        <div className="no-chart-data">No data to show</div>
       )}
     </div>
   );

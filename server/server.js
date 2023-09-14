@@ -4,10 +4,7 @@ import cors from "cors";
 import React from "react";
 import { renderToString } from "react-dom/server";
 import path from "path";
-// import Dashboard from "../src/pages/Dashboard/Dashboard.js";
 import Dashboard from "../src/pages/Dashboard/Dashboard.js";
-
-// const db = require("./config/mongoose");
 
 const userRoutes = require("./routes/userRoutes");
 
@@ -15,10 +12,6 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-
-// Set EJS as the view engine
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
 
 app.use("/users", userRoutes);
 
