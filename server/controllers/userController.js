@@ -16,13 +16,17 @@ const signinController = async (req, res) => {
     const user = await User.findOne({ email });
 
     if (!user) {
-      return res.status(400).json({ message: "User doesn't exist!" });
+      return res
+        .status(400)
+        .json({ message: "User doesn't exist. Please register first." });
     }
 
     const isPasswordCorrect = await bcrypt.compare(password, user.password);
 
     if (!isPasswordCorrect) {
-      return res.status(400).json({ message: "Incorrect Password" });
+      return res
+        .status(400)
+        .json({ message: "The credentials are incorrect." });
     }
 
     const token = jwt.sign(
@@ -43,12 +47,14 @@ const signupController = async (req, res) => {
   const { name, email, password } = req.body;
   try {
     if (!email || !name || !password || password.length <= 6) {
-      return res.status(400).json({ message: "Invalid field!" });
+      return res.status(400).json({ message: "All fields are mandatory" });
     }
     const userExists = await User.findOne({ email });
 
     if (userExists) {
-      return res.status(400).json({ message: "User already exists!" });
+      return res
+        .status(400)
+        .json({ message: "User already exists. Please login." });
     }
 
     const hashedPassword = await bcrypt.hash(password, 12);
