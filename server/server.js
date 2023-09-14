@@ -4,6 +4,7 @@ import cors from "cors";
 import React from "react";
 import { renderToString } from "react-dom/server";
 import path from "path";
+// import Dashboard from "../src/pages/Dashboard/Dashboard.js";
 import Dashboard from "../src/pages/Dashboard/Dashboard.js";
 
 // const db = require("./config/mongoose");
