@@ -6,6 +6,10 @@ This repository contains the source code for the Finance Tracker app, developed 
 
 [https://finance-tracker-sandy.vercel.app/](https://finance-tracker-sandy.vercel.app/)
 
+Testing credentials :
+email id : test@abc.com
+password : 123
+
 ## Prerequisites
 
 Before you begin, make sure you have Node.js installed on your system. If not, you can download and install it from [nodejs.org](https://nodejs.org/).
