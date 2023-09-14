@@ -49,7 +49,6 @@ export default function TransactionTable() {
 
   const handleSort = (column) => {
     const col = sortColumn.find((el) => el.value === column);
-    console.log(" tableData", tableData);
     if (col.sortDirection === "asc") {
       if (col.compare === "number") {
         tableData.sort((a, b) => a[column] - b[column]);
@@ -67,7 +66,6 @@ export default function TransactionTable() {
         tableData.sort((a, b) => b[column] - a[column]);
       } else {
         tableData.sort((a, b) => {
-          console.log(a, column);
           return a[column].localeCompare(b[column]);
         });
       }
@@ -100,7 +98,7 @@ export default function TransactionTable() {
         <thead>
           <tr>
             {sortColumn.map((column) => (
-              <th>
+              <th key={column.value}>
                 <div>
                   {column.name}
                   <img

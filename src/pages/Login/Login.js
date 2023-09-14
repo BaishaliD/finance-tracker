@@ -62,7 +62,7 @@ function Login() {
               autoComplete="off"
             />
           </div>
-          <span className="error-text">{authError}</span>
+          <div className="error-text">{authError}</div>
           <button type="submit">Login</button>
           <p className="helper-text">
             Don't have an account? <a href="/register">Register here</a>

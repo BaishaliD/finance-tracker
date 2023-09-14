@@ -63,7 +63,6 @@ export default function Sidemenu() {
   const [name, setName] = useState("");
 
   useEffect(() => {
-    console.log("Route changed ", location.pathname);
     setSelectedRoute(location?.pathname);
   }, [location?.pathname]);
 

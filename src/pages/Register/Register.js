@@ -62,7 +62,7 @@ function Register() {
               autocomplete="new-password"
             />
           </div>
-          <span className="error-text">{authError}</span>
+          <div className="error-text">{authError}</div>
           <button type="submit">Register</button>
           <p className="helper-text">
             Already have an account? <a href="/">Login here</a>

@@ -7,7 +7,6 @@ export default function Layout({ heading, children }) {
   const navigate = useNavigate();
   const location = useLocation();
   useEffect(() => {
-    console.log("LAYOUT CALLED");
     if (!localStorage.getItem("user_info")) {
       navigate("/loggedout");
     }
