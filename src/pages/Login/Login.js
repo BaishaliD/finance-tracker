@@ -13,8 +13,8 @@ function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("test@abc.com");
+  const [password, setPassword] = useState("123");
 
   // Function to handle form submission
   const handleSubmit = (e) => {
