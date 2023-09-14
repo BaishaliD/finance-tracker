@@ -2,23 +2,20 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.scss";
 import "../Forms.scss";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { signIn } from "../../redux/actions/auth";
 
 function Login() {
+  const { authError } = useSelector(({ auth }) => auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // State to manage user input
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add your authentication logic here
-    console.log("Email:", email);
-    console.log("Password:", password);
-    // You can send the data to your backend for authentication
     if (email !== "" && password !== "") {
       dispatch(signIn({ email, password }, navigate));
     }
@@ -52,6 +49,7 @@ function Login() {
               autocomplete="new-password"
             />
           </div>
+          <span className="error-text">{authError}</span>
           <button type="submit">Login</button>
           <p className="helper-text">
             Don't have an account? <a href="/register">Register here</a>

@@ -2,10 +2,12 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Register.scss";
 import "../Forms.scss";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { signUp } from "../../redux/actions/auth";
 
 function Register() {
+  const { authError } = useSelector(({ auth }) => auth);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -60,6 +62,7 @@ function Register() {
               autocomplete="new-password"
             />
           </div>
+          <span className="error-text">{authError}</span>
           <button type="submit">Register</button>
           <p className="helper-text">
             Already have an account? <a href="/">Login here</a>

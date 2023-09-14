@@ -1,4 +1,4 @@
-import { AUTH } from "../const/actionsTypes";
+import { AUTH, AUTH_FAILED } from "../const/actionsTypes";
 import * as api from "../../api/index";
 
 export const loadUser = () => async (dispatch) => {
@@ -10,6 +10,7 @@ export const loadUser = () => async (dispatch) => {
 };
 
 export const signIn = (formData, navigate) => async (dispatch) => {
+  console.log("SIGN IN ");
   try {
     const { data } = await api.signIn(formData);
 
@@ -17,6 +18,12 @@ export const signIn = (formData, navigate) => async (dispatch) => {
     navigate("/insights");
   } catch (err) {
     console.log("Signin error ", err);
+    dispatch({
+      type: AUTH_FAILED,
+      data: err?.response?.data?.message
+        ? err.response.data.message
+        : "Something is not right. Please retry!",
+    });
   }
 };
 
@@ -27,6 +34,12 @@ export const signUp = (formData, navigate) => async (dispatch) => {
     dispatch({ type: AUTH, data });
     navigate("/");
   } catch (err) {
-    console.log("Signin error ", err);
+    console.log("Signup error ", err);
+    dispatch({
+      type: AUTH_FAILED,
+      data: err?.response?.data?.message
+        ? err.response.data.message
+        : "Something is not right. Please retry!",
+    });
   }
 };

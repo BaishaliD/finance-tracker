@@ -1,21 +1,41 @@
-// const axios = require("axios");
+import axios from "axios";
 
-// const API = axios.create({ baseURL: "http://localhost:5000" });
+const API = axios.create({ baseURL: "http://localhost:5000" });
 
-// API.interceptors.request.use((req) => {
-//   if (localStorage.getItem("user_info")) {
-//     req.headers.Authorization = `Bearer ${
-//       JSON.parse(localStorage.getItem("user_info")).token
-//     }`;
-//   }
+API.interceptors.request.use((req) => {
+  if (localStorage.getItem("user_info")) {
+    req.headers.Authorization = `Bearer ${
+      JSON.parse(localStorage.getItem("user_info")).token
+    }`;
+  }
 
-//   return req;
-// });
+  return req;
+});
 
-// export const signIn = (data) => API.post("/users/signin", data);
+// const api_base = "http://localhost:5000";
 
-// export const signUp = (data) => API.post("/users/signup", data);
+// export const signIn = (data) => {
+//   return axios.post(api_base + "/users/signin", data, {
+//     headers: {
+//       "Content-Type": "multipart/form-data",
+//       Authorization: `Bearer ${
+//         JSON.parse(localStorage.getItem("user_info")).token
+//       }`,
+//     },
+//   });
+// };
 
-export const signIn = (data) => fetch("");
+// export const signUp = (data) => {
+//   return axios.post(api_base + "/users/signup", data, {
+//     headers: {
+//       "Content-Type": "multipart/form-data",
+//       Authorization: `Bearer ${
+//         JSON.parse(localStorage.getItem("user_info")).token
+//       }`,
+//     },
+//   });
+// };
 
-export const signUp = (data) => fetch("");
+export const signIn = (data) => API.post("/users/signin", data);
+
+export const signUp = (data) => API.post("/users/signup", data);
