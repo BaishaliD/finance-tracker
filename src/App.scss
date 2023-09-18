@@ -28,6 +28,11 @@ button {
 button:hover {
   background-color: var(--hover);
 }
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
 
 .no-data {
   padding: 2rem;

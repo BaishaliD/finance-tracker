@@ -14,12 +14,14 @@ function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
     if (name !== "" && email !== "" && password !== "") {
-      dispatch(signUp({ name, email, password }, navigate));
+      dispatch(signUp({ name, email, password }, navigate, setLoading));
     }
   };
 
@@ -63,7 +65,9 @@ function Register() {
             />
           </div>
           <div className="error-text">{authError}</div>
-          <button type="submit">Register</button>
+          <button type="submit" disabled={loading}>
+            Register
+          </button>
           <p className="helper-text">
             Already have an account? <a href="/">Login here</a>
           </p>

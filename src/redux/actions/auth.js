@@ -9,13 +9,15 @@ export const loadUser = () => async (dispatch) => {
   }
 };
 
-export const signIn = (formData, navigate) => async (dispatch) => {
+export const signIn = (formData, navigate, setLoading) => async (dispatch) => {
   try {
     const { data } = await api.signIn(formData);
 
     dispatch({ type: AUTH, data });
+    setLoading(false);
     navigate("/insights");
   } catch (err) {
+    setLoading(false);
     dispatch({
       type: AUTH_FAILED,
       data: err?.response?.data?.message
@@ -25,13 +27,15 @@ export const signIn = (formData, navigate) => async (dispatch) => {
   }
 };
 
-export const signUp = (formData, navigate) => async (dispatch) => {
+export const signUp = (formData, navigate, setLoading) => async (dispatch) => {
   try {
     const { data } = await api.signUp(formData);
 
     dispatch({ type: AUTH, data });
+    setLoading(false);
     navigate("/");
   } catch (err) {
+    setLoading(false);
     dispatch({
       type: AUTH_FAILED,
       data: err?.response?.data?.message

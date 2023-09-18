@@ -145,7 +145,8 @@ export default function TransactionTable() {
       </table>
       {!tableData?.length > 0 && (
         <div className="no-table-data">
-          You don't have any recent transaction
+          You don't have any recent transaction. Add an{" "}
+          <a href="/incomes">income</a> or <a href="/expenses">expense</a>.
         </div>
       )}
     </div>

@@ -12,12 +12,14 @@ function Login() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
     if (email !== "" && password !== "") {
-      dispatch(signIn({ email, password }, navigate));
+      dispatch(signIn({ email, password }, navigate, setLoading));
     }
   };
 
@@ -50,7 +52,9 @@ function Login() {
             />
           </div>
           <div className="error-text">{authError}</div>
-          <button type="submit">Login</button>
+          <button type="submit" disabled={loading}>
+            Login
+          </button>
           <p className="helper-text">
             Don't have an account? <a href="/register">Register here</a>
           </p>
