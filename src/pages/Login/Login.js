@@ -5,31 +5,18 @@ import "../Forms.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { signIn } from "../../redux/actions/auth";
 
-const WHITELISTED_EMAIL = "test@abc.com";
-const WHITELISTED_PASSWORD = "123";
-
 function Login() {
   const { authError } = useSelector(({ auth }) => auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [email, setEmail] = useState("test@abc.com");
-  const [password, setPassword] = useState("123");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (email === WHITELISTED_EMAIL && password === WHITELISTED_PASSWORD) {
-      const whitelisted_user_info = {
-        email: WHITELISTED_EMAIL,
-        name: "Guest User",
-      };
-      localStorage.setItem(
-        "user_info",
-        JSON.stringify({ result: whitelisted_user_info })
-      );
-      navigate("/insights");
-    } else if (email !== "" && password !== "") {
+    if (email !== "" && password !== "") {
       dispatch(signIn({ email, password }, navigate));
     }
   };
@@ -44,7 +31,7 @@ function Login() {
             <input
               type="email"
               id="email"
-              placeholder={WHITELISTED_EMAIL}
+              placeholder={"Enter your email"}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -55,7 +42,7 @@ function Login() {
             <input
               type="password"
               id="password"
-              placeholder={WHITELISTED_PASSWORD}
+              placeholder={"Enter your password"}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required

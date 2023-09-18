@@ -2,7 +2,6 @@ import React from "react";
 
 const cardStyles = {
   width: "300px",
-  display: "flex",
   padding: "1rem",
   margin: "1rem",
   border: "1px solid #f6f7fb",
@@ -15,7 +14,7 @@ const cardStyles = {
 };
 
 const infoStyles = {
-  textAlign: "left",
+  textAlign: "center",
 };
 
 const h2Styles = {

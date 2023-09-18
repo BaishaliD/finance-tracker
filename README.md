@@ -4,11 +4,9 @@ This repository contains the source code for the Finance Tracker app, developed 
 
 ## Live Demo
 
-[https://finance-tracker-sandy.vercel.app/](https://finance-tracker-sandy.vercel.app/)
+[https://expense-tracker-l96k.onrender.com/](https://expense-tracker-l96k.onrender.com/)
 
-Testing credentials :
-email id : test@abc.com
-password : 123
+## Running the code on your local machine
 
 ## Prerequisites
 
